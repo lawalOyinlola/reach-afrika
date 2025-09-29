@@ -1,0 +1,79 @@
+{
+  "name": "Reach Afrika - Building Communities Across Africa",
+  "short_name": "Reach Afrika",
+  "description": "Reach Afrika is a non-profit organization dedicated to building sustainable communities across Africa through education, healthcare, and economic development programs.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f9fafb",
+  "theme_color": "#155c39",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo/logo-icon-removebg.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo/logo-icon-removebg.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": [
+    "nonprofit",
+    "charity",
+    "social",
+    "education",
+    "healthcare",
+    "music",
+    "culture",
+    "art",
+    "science",
+    "technology",
+    "engineering",
+    "math",
+    "programming",
+    "coding",
+    "development",
+    "entrepreneurship",
+    "innovation",
+    "creativity",
+    "entrepreneur",
+    "innovator",
+    "creator",
+    "developer",
+    "designer",
+    "artist",
+    "scientist",
+    "engineer",
+    "programmer",
+    "coder",
+    "designer",
+    "artist",
+    "scientist",
+    "engineer",
+    "programmer",
+    "coder"
+  ],
+  "lang": "en",
+  "dir": "ltr",
+  "scope": "/",
+  "prefer_related_applications": false
+}
