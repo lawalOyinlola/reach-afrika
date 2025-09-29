@@ -45,16 +45,13 @@ export const PerformanceOptimizer: React.FC<PerformanceOptimizerProps> = ({
 
     // Monitor Core Web Vitals
     const measureWebVitals = () => {
-      if ("web-vital" in window) {
-        import("web-vitals").then(
-          ({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
-            getCLS(reportWebVitals);
-            getFID(reportWebVitals);
-            getFCP(reportWebVitals);
-            getLCP(reportWebVitals);
-            getTTFB(reportWebVitals);
-          }
-        );
+      if (typeof window !== "undefined") {
+        import("web-vitals").then(({ onCLS, onFCP, onLCP, onTTFB }) => {
+          onCLS(reportWebVitals);
+          onFCP(reportWebVitals);
+          onLCP(reportWebVitals);
+          onTTFB(reportWebVitals);
+        });
       }
     };
 

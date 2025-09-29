@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { LoadingAnimation } from "./loading-animation";
 import { AdvancedLoadingAnimation } from "./advanced-loading-animation";
 import { Button } from "./button";

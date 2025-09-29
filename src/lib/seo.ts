@@ -25,20 +25,18 @@ export const defaultSEO: SEOProps = {
 };
 
 export const generatePageTitle = (pageTitle?: string): string => {
-  if (!pageTitle) return defaultSEO.title;
+  if (!pageTitle) return defaultSEO.title!;
   return `${pageTitle} | Reach Afrika`;
 };
 
 export const generateMetaDescription = (description?: string): string => {
-  if (!description) return defaultSEO.description;
+  if (!description) return defaultSEO.description!;
   return description.length > 160
     ? description.substring(0, 157) + "..."
     : description;
 };
 
 export const generateStructuredData = (seo: SEOProps) => {
-  const baseUrl = seo.url || defaultSEO.url;
-
   return {
     "@context": "https://schema.org",
     "@type": seo.type === "article" ? "Article" : "WebPage",

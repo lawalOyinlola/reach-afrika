@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { cn } from "@/lib/utils";
 
@@ -18,7 +18,7 @@ export const LoadingAnimation = ({
   const sunRef = useRef<SVGCircleElement>(null);
   const humanRef = useRef<SVGGElement>(null);
   const leafRef = useRef<SVGPathElement>(null);
-  const timelineRef = useRef<gsap.core.Timeline>();
+  const timelineRef = useRef<gsap.core.Timeline | null>(null);
 
   const sizeClasses = {
     sm: "w-16 h-16",
@@ -34,7 +34,7 @@ export const LoadingAnimation = ({
     const tl = gsap.timeline({
       repeat: -1,
       repeatDelay: 0.5,
-      onComplete: onComplete,
+      onComplete: onComplete || (() => {}),
     });
 
     timelineRef.current = tl;

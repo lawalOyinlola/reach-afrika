@@ -1,7 +1,5 @@
 // Google Analytics 4 and Core Web Vitals tracking
-export const GA_TRACKING_ID =
-  (typeof process !== "undefined" && process.env?.REACT_APP_GA_TRACKING_ID) ||
-  "G-XXXXXXXXXX";
+export const GA_TRACKING_ID = "G-XXXXXXXXXX";
 
 // Google Analytics
 export const gtag = (...args: any[]) => {
@@ -48,8 +46,8 @@ export const reportWebVitals = (metric: any) => {
 
   // Send to custom analytics endpoint
   if (
-    typeof process !== "undefined" &&
-    process.env?.NODE_ENV === "production"
+    typeof window !== "undefined" &&
+    window.location.hostname !== "localhost"
   ) {
     fetch("/api/analytics/web-vitals", {
       method: "POST",
