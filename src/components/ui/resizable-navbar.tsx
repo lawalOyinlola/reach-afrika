@@ -198,24 +198,6 @@ export const MobileNavToggle = ({
   );
 };
 
-export const Logo = () => {
-  return (
-    <a
-      href="#"
-      className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
-    >
-      {/* <img
-        src="/logo/logo-img.JPG"
-        alt="Reach Afrika logo"
-        width={40}
-        height={40}
-        // className="rounded"
-      /> */}
-      <img src="/logo/logo-words-removebg.png" width={52} height={32} />
-    </a>
-  );
-};
-
 export const NavbarButton = ({
   href,
   as: Tag = "a",

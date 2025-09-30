@@ -1,40 +1,22 @@
-// import { Logo } from "@/components/logo";
-
-import { Logo } from "./ui/resizable-navbar";
+import { LogoText } from "@/components/logo";
 
 const links = [
-  {
-    title: "Features",
-    href: "#",
-  },
-  {
-    title: "Solution",
-    href: "#",
-  },
-  {
-    title: "Customers",
-    href: "#",
-  },
-  {
-    title: "Pricing",
-    href: "#",
-  },
-  {
-    title: "Help",
-    href: "#",
-  },
-  {
-    title: "About",
-    href: "#",
-  },
+  { title: "About", href: "#about" },
+  { title: "Programs", href: "#programs" },
+  { title: "Impact", href: "#impact" },
+  { title: "Features", href: "#features" },
+  { title: "Testimonials", href: "#testimonials" },
+  { title: "Contact", href: "#contact" },
+  { title: "Governance & Team", href: "/governance" },
+  { title: "Donate", href: "/donate" },
 ];
 
-export default function FooterSection() {
+export default function Footer() {
   return (
-    <footer className="py-16 md:py-32">
+    <footer className="py-12 md:py-20">
       <div className="mx-auto max-w-5xl px-6">
         <a href="/" aria-label="go home" className="mx-auto block size-fit">
-          <Logo />
+          <LogoText />
         </a>
 
         <div className="my-8 flex flex-wrap justify-center gap-6 text-sm">
@@ -175,6 +157,7 @@ export default function FooterSection() {
             </svg>
           </a>
         </div>
+
         <span className="text-muted-foreground block text-center text-sm">
           {" "}
           © {new Date().getFullYear()} Reach Afrika, All rights reserved

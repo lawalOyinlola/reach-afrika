@@ -5,6 +5,14 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@font-face {
+  font-family: "Bokcero";
+  src: url("/font/bokcero.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* Light theme - NGO inspired color scheme */
   --background: #f9fafb;
@@ -60,6 +68,7 @@
   --font-sans: "Unbounded", ui-sans-serif, sans-serif, system-ui;
   --font-serif: "Nunito Sans", ui-sans-serif, sans-serif, system-ui;
   --font-mono: "Fira Code", ui-monospace, monospace;
+  --font-bokcero: "Bokcero", ui-sans-serif, system-ui;
 
   /* Layout */
   --radius: 0.5rem;
@@ -141,6 +150,7 @@
   --font-sans: "Unbounded", ui-sans-serif, sans-serif, system-ui;
   --font-serif: "Nunito Sans", ui-sans-serif, sans-serif, system-ui;
   --font-mono: "Fira Code", ui-monospace, monospace;
+  --font-bokcero: "Bokcero", ui-sans-serif, system-ui;
 
   /* Layout */
   --radius: 0.5rem;
@@ -206,6 +216,7 @@
   --font-serif: Merriweather;
   --font-unbounded: "Unbounded", sans-serif;
   --font-nunito: "Nunito Sans", sans-serif;
+  --font-bokcero: "Bokcero", sans-serif;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -261,6 +272,9 @@
   body {
     @apply bg-background text-foreground font-nunito tracking-normal;
   }
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 @layer components {
@@ -269,7 +283,7 @@
   }
 
   .card-title {
-    @apply text-2xl font-unbounded font-semibold leading-tight;
+    @apply text-xl sm:text-2xl font-unbounded font-semibold leading-tight;
   }
 
   .card-subtitle {

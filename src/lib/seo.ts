@@ -125,3 +125,37 @@ export const generateEventStructuredData = (event: {
     },
   };
 };
+
+// Organization structured data from centralized data module
+import { organizationProfile } from "@/data/organization";
+
+export const generateOrganizationStructuredData = () => {
+  return {
+    "@context": "https://schema.org",
+    "@type": "NonprofitOrganization",
+    name: organizationProfile.name,
+    alternateName: organizationProfile.alternateName,
+    url: organizationProfile.contact.url,
+    logo: organizationProfile.logo,
+    sameAs: organizationProfile.sameAs,
+    slogan: organizationProfile.motto,
+    foundingDate: organizationProfile.founded,
+    description: organizationProfile.description,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: organizationProfile.address.streetAddress,
+      addressLocality: organizationProfile.address.addressLocality,
+      addressRegion: organizationProfile.address.addressRegion,
+      addressCountry: organizationProfile.address.addressCountry,
+    },
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        contactType: "customer service",
+        email: organizationProfile.contact.email,
+        telephone: organizationProfile.contact.phone,
+      },
+    ],
+    knowsAbout: organizationProfile.keywords,
+  };
+};

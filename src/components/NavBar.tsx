@@ -3,7 +3,6 @@ import {
   NavBody,
   NavItems,
   MobileNav,
-  Logo,
   NavbarButton,
   MobileNavHeader,
   MobileNavToggle,
@@ -11,21 +10,16 @@ import {
 } from "@/components/ui/resizable-navbar";
 import { useState } from "react";
 import { AnimatedThemeToggler } from "./ui/animated-theme-toggler";
+import { Logo } from "./logo";
+import { Link } from "react-router";
 
 export function Navbar() {
   const navItems = [
-    {
-      name: "Features",
-      link: "#features",
-    },
-    {
-      name: "Pricing",
-      link: "#pricing",
-    },
-    {
-      name: "Contact",
-      link: "#contact",
-    },
+    { name: "About", link: "#about" },
+    { name: "Programs", link: "#programs" },
+    { name: "Impact", link: "#impact" },
+    { name: "Features", link: "#features" },
+    { name: "Contact", link: "#contact" },
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -34,12 +28,14 @@ export function Navbar() {
     <NavbarComponent>
       {/* Desktop Navigation */}
       <NavBody>
-        <Logo />
+        <Link to="/" className="flex-center  cursor-pointer">
+          <Logo />
+        </Link>
         <NavItems items={navItems} />
         <div className="flex items-center gap-4">
-          <NavbarButton variant="secondary">Login</NavbarButton>
-
-          <NavbarButton variant="primary">Book a call</NavbarButton>
+          <a href="/donate" className="hidden md:inline-block">
+            <NavbarButton variant="primary">Donate</NavbarButton>
+          </a>
           <AnimatedThemeToggler className="z-20" />
         </div>
       </NavBody>
@@ -70,20 +66,11 @@ export function Navbar() {
           ))}
           <div className="flex w-full flex-col gap-4">
             <AnimatedThemeToggler className="z-20" text="Switch Theme" />
-            <NavbarButton
-              onClick={() => setIsMobileMenuOpen(false)}
-              variant="primary"
-              className="w-full"
-            >
-              Login
-            </NavbarButton>
-            <NavbarButton
-              onClick={() => setIsMobileMenuOpen(false)}
-              variant="primary"
-              className="w-full"
-            >
-              Book a call
-            </NavbarButton>
+            <a href="/donate" onClick={() => setIsMobileMenuOpen(false)}>
+              <NavbarButton variant="primary" className="w-full">
+                Donate
+              </NavbarButton>
+            </a>
           </div>
         </MobileNavMenu>
       </MobileNav>

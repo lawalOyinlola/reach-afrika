@@ -1,5 +1,7 @@
 import { AnimationTitle } from "../ui/animation-title";
 import { Card, CardContent, CardDescription, CardFooter } from "../ui/card";
+import { useState } from "react";
+import { Skeleton } from "../ui/skeleton";
 
 const testimonials = [
   {
@@ -51,13 +53,10 @@ export const TestimonialsSection = () => {
               </CardContent>
               <CardFooter>
                 <div className="flex items-center">
-                  <div className="w-12 h-12 rounded-full overflow-hidden mr-4">
-                    <img
-                      src={testimonial.avatar}
-                      alt={testimonial.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+                  <AvatarWithSkeleton
+                    src={testimonial.avatar}
+                    alt={testimonial.name}
+                  />
                   <div className="text-sm">
                     <div className="text-black dark:text-white font-unbounded">
                       {testimonial.name}
@@ -73,5 +72,22 @@ export const TestimonialsSection = () => {
         </div>
       </div>
     </section>
+  );
+};
+
+const AvatarWithSkeleton = ({ src, alt }: { src: string; alt: string }) => {
+  const [loaded, setLoaded] = useState(false);
+  return (
+    <div className="w-12 h-12 rounded-full overflow-hidden mr-4 relative">
+      {!loaded && <Skeleton className="absolute inset-0 w-full h-full" />}
+      <img
+        src={src}
+        alt={alt}
+        className={`w-full h-full object-cover transition-opacity duration-300 ${
+          loaded ? "opacity-100" : "opacity-0"
+        }`}
+        onLoad={() => setLoaded(true)}
+      />
+    </div>
   );
 };
