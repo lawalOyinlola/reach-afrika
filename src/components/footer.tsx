@@ -11,7 +11,7 @@ const links = [
   { title: "Donate", href: "/donate" },
 ];
 
-export default function Footer() {
+export const Footer = () => {
   return (
     <footer className="py-12 md:py-20">
       <div className="mx-auto max-w-5xl px-6">
@@ -165,4 +165,4 @@ export default function Footer() {
       </div>
     </footer>
   );
-}
+};
