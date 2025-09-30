@@ -1,19 +1,21 @@
-import * as React from "react";
-import { isValidElement } from "react";
-import type { ReactNode } from "react";
+import {
+  createContext,
+  isValidElement,
+  useContext,
+  type ReactNode,
+} from "react";
+import { cn } from "@/lib/utils";
+import { cva, type VariantProps } from "class-variance-authority";
 import { Select as SelectPrimitive } from "@base-ui-components/react/select";
-import { cva } from "class-variance-authority";
-import type { VariantProps } from "class-variance-authority";
 import {
   CheckIcon,
   CaretDownIcon,
   CaretUpIcon,
   XIcon,
 } from "@phosphor-icons/react";
-import { cn } from "@/lib/utils";
 
 // Create a Context for `indicatorPosition` and `indicator` control
-const SelectContext = React.createContext<{
+const SelectContext = createContext<{
   indicatorPosition: "left" | "right";
   indicatorVisibility: boolean;
   indicator: ReactNode;
@@ -189,7 +191,7 @@ function SelectTrigger({
   size,
   ...props
 }: SelectTriggerProps) {
-  const { icon } = React.useContext(SelectContext);
+  const { icon } = useContext(SelectContext);
 
   return (
     <SelectPrimitive.Trigger
@@ -272,7 +274,7 @@ function SelectItem({
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Item>) {
   const { indicatorPosition, indicatorVisibility, indicator } =
-    React.useContext(SelectContext);
+    useContext(SelectContext);
 
   return (
     <SelectPrimitive.Item
@@ -317,7 +319,7 @@ function SelectLabel({
   className,
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.GroupLabel>) {
-  const { indicatorPosition } = React.useContext(SelectContext);
+  const { indicatorPosition } = useContext(SelectContext);
 
   return (
     <SelectPrimitive.GroupLabel
@@ -337,7 +339,7 @@ function SelectIndicator({
   className,
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.ItemIndicator>) {
-  const { indicatorPosition } = React.useContext(SelectContext);
+  const { indicatorPosition } = useContext(SelectContext);
 
   return (
     <span

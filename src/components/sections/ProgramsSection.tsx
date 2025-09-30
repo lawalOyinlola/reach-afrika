@@ -1,5 +1,7 @@
 import { CaretDoubleRightIcon } from "@phosphor-icons/react";
 import { AnimationTitle } from "../ui/animation-title";
+import { useState } from "react";
+import { Skeleton } from "../ui/skeleton";
 
 const programs = [
   {
@@ -81,14 +83,7 @@ export const ProgramsSection = () => {
               >
                 {/* Background Image */}
                 {program.image && (
-                  <div className="absolute inset-0">
-                    <img
-                      src={program.image}
-                      alt={program.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute inset-0 bg-black/40"></div>
-                  </div>
+                  <ProgramImage src={program.image} alt={program.title} />
                 )}
 
                 {/* Gradient Overlay */}
@@ -131,5 +126,23 @@ export const ProgramsSection = () => {
         </div>
       </div>
     </section>
+  );
+};
+
+const ProgramImage = ({ src, alt }: { src: string; alt: string }) => {
+  const [loaded, setLoaded] = useState(false);
+  return (
+    <div className="absolute inset-0">
+      {!loaded && <Skeleton className="absolute inset-0 w-full h-full" />}
+      <img
+        src={src}
+        alt={alt}
+        className={`w-full h-full object-cover transition-transform duration-300 ${
+          loaded ? "group-hover:scale-105" : ""
+        } ${loaded ? "opacity-100" : "opacity-0"}`}
+        onLoad={() => setLoaded(true)}
+      />
+      <div className="absolute inset-0 bg-black/40"></div>
+    </div>
   );
 };

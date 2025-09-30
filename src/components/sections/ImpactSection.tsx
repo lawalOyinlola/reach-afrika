@@ -7,6 +7,8 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
+import { useState } from "react";
+import { Skeleton } from "../ui/skeleton";
 
 const stats = [
   {
@@ -70,17 +72,28 @@ export const ImpactSection = () => {
             ))}
           </div>
 
-          <div className="relative col-span-2">
-            <div className="aspect-5/4 rounded-2xl overflow-hidden">
-              <img
-                src="/images/_DSC2927.webp"
-                alt="Community members working together"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
+          <MainImage />
         </div>
       </div>
     </section>
+  );
+};
+
+const MainImage = () => {
+  const [loaded, setLoaded] = useState(false);
+  return (
+    <div className="relative col-span-2">
+      <div className="aspect-5/4 rounded-2xl overflow-hidden relative">
+        {!loaded && <Skeleton className="absolute inset-0 w-full h-full" />}
+        <img
+          src="/images/_DSC2927.webp"
+          alt="Community members working together"
+          className={`w-full h-full object-cover transition-opacity duration-300 ${
+            loaded ? "opacity-100" : "opacity-0"
+          }`}
+          onLoad={() => setLoaded(true)}
+        />
+      </div>
+    </div>
   );
 };

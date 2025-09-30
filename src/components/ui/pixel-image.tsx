@@ -7,7 +7,6 @@ import {
   motion,
   MotionValue,
 } from "motion/react";
-
 import { cn } from "@/lib/utils";
 
 type Grid = {

@@ -90,7 +90,7 @@ export const AboutSection = () => {
                 isView={true}
                 scrollTrigger={true}
                 scrollStart="start end"
-                scrollEnd="center center"
+                scrollEnd="end end"
               />
             </div>
           </div>
@@ -98,12 +98,12 @@ export const AboutSection = () => {
             {features.map((feature, index) => (
               <Card
                 key={index}
-                className="py-0 gap-4 text-primary-foreground border-none"
+                className=" py-0 gap-4 text-primary-foreground border-none"
               >
                 <CardHeader className="px-0">
                   <CardTitle className="flex flex-col gap-4 items-start card-title">
                     <feature.icon size={32} weight="bold" />
-                    <span>{feature.title}</span>
+                    <span className="break-all">{feature.title}</span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="px-0">

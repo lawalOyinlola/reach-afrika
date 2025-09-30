@@ -1,38 +1,38 @@
+import { useEffect, useState, Suspense, lazy } from "react";
+import { BrowserRouter, Routes, Route } from "react-router";
+import { ErrorBoundary } from "./components/ErrorBoundary";
 import { HelmetProvider } from "react-helmet-async";
-import { Navbar } from "./components/NavBar";
-import { Hero } from "./components/sections/Hero";
-import { AboutSection } from "./components/sections/AboutSection";
-import { ProgramsSection } from "./components/sections/ProgramsSection";
-import { FeaturesSection } from "./components/sections/FeaturesSection";
-import { ImpactSection } from "./components/sections/ImpactSection";
-import { TestimonialsSection } from "./components/sections/TestimonialsSection";
-import { ContactSection } from "./components/sections/ContactSection";
-import { ScrollProgress } from "./components/ui/scroll-progress";
-import { SEOHead } from "./components/seo/SEOHead";
-import { StructuredData } from "./components/seo/SEOHead";
+import { SEOHead, StructuredData } from "./components/seo/SEOHead";
 import {
   PerformanceOptimizer,
   ResourceHints,
   CriticalCSS,
 } from "./components/seo/PerformanceOptimizer";
 import { generateStructuredData } from "./lib/seo";
-import FooterSection from "./components/footer";
+import StartupLoadingScreen from "./components/ui/startup-loading-screen";
+import { ScrollProgress } from "./components/ui/scroll-progress";
+
+// Lazy load page components for code splitting
+const Home = lazy(() => import("./pages/Home"));
+const GovernanceTeam = lazy(() => import("./pages/GovernanceTeam"));
+const Donate = lazy(() => import("./pages/Donate"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 function App() {
-  // const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // useEffect(() => {
-  //   // Simulate loading time - you can replace this with actual loading logic
-  //   const timer = setTimeout(() => {
-  //     setIsLoading(false);
-  //   }, 4000); // 4 seconds to show the full animation
+  useEffect(() => {
+    // Simulate loading time
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
 
-  //   return () => clearTimeout(timer);
-  // }, []);
+    return () => clearTimeout(timer);
+  }, []);
 
-  // if (isLoading) {
-  //   return <EnhancedLoadingScreen onComplete={() => setIsLoading(false)} />;
-  // }
+  if (isLoading) {
+    return <StartupLoadingScreen />;
+  }
 
   return (
     <HelmetProvider>
@@ -44,17 +44,27 @@ function App() {
         keywords="NGO Africa, community development, education Africa, healthcare Africa, sustainable development, non-profit, volunteer Africa, charity, social impact"
       />
       <StructuredData data={generateStructuredData({})} />
+
       <PerformanceOptimizer>
         <ScrollProgress />
-        <Navbar />
-        <Hero />
-        <AboutSection />
-        <ProgramsSection />
-        <FeaturesSection />
-        <ImpactSection />
-        <TestimonialsSection />
-        <ContactSection />
-        <FooterSection />
+        <BrowserRouter>
+          <ErrorBoundary>
+            <Suspense
+              fallback={
+                <div className="flex items-center justify-center min-h-screen">
+                  Loading...
+                </div>
+              }
+            >
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/team" element={<GovernanceTeam />} />
+                <Route path="/donate" element={<Donate />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Suspense>
+          </ErrorBoundary>
+        </BrowserRouter>
       </PerformanceOptimizer>
     </HelmetProvider>
   );

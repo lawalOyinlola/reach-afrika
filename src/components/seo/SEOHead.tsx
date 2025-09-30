@@ -5,6 +5,7 @@ import {
   defaultSEO,
   generatePageTitle,
   generateMetaDescription,
+  generateOrganizationStructuredData,
 } from "@/lib/seo";
 
 interface SEOHeadProps extends SEOProps {
@@ -30,6 +31,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
   const pageUrl = url || defaultSEO.url;
   const pageImage = image || defaultSEO.image;
   const pageKeywords = keywords || defaultSEO.keywords;
+  const orgJsonLd = generateOrganizationStructuredData();
 
   return (
     <Helmet>
@@ -85,6 +87,9 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       <meta name="msapplication-TileColor" content="#155c39" />
 
       {children}
+
+      {/* Organization structured data */}
+      <script type="application/ld+json">{JSON.stringify(orgJsonLd)}</script>
     </Helmet>
   );
 };
