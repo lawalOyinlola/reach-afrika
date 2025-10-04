@@ -13,7 +13,7 @@ const links = [
 
 export const Footer = () => {
   return (
-    <footer className="py-12 md:py-20">
+    <footer className="py-12 md:py-20 bg-white/80 dark:bg-neutral-950/80">
       <div className="mx-auto max-w-5xl px-6">
         <a href="/" aria-label="go home" className="mx-auto block size-fit">
           <LogoText />

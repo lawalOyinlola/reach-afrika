@@ -11,9 +11,11 @@ import {
 import { generateStructuredData } from "./lib/seo";
 import StartupLoadingScreen from "./components/ui/startup-loading-screen";
 import { ScrollProgress } from "./components/ui/scroll-progress";
+import { Toaster } from "sonner";
 
 // Lazy load page components for code splitting
 const Home = lazy(() => import("./pages/Home"));
+const About = lazy(() => import("./pages/About"));
 const GovernanceTeam = lazy(() => import("./pages/GovernanceTeam"));
 const Donate = lazy(() => import("./pages/Donate"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -25,7 +27,7 @@ function App() {
     // Simulate loading time
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+    }, 2500);
 
     return () => clearTimeout(timer);
   }, []);
@@ -49,15 +51,11 @@ function App() {
         <ScrollProgress />
         <BrowserRouter>
           <ErrorBoundary>
-            <Suspense
-              fallback={
-                <div className="flex items-center justify-center min-h-screen">
-                  Loading...
-                </div>
-              }
-            >
+            <Suspense fallback={<StartupLoadingScreen />}>
+              <Toaster />
               <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
                 <Route path="/team" element={<GovernanceTeam />} />
                 <Route path="/donate" element={<Donate />} />
                 <Route path="*" element={<NotFound />} />

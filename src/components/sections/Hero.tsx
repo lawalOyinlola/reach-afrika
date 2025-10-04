@@ -4,12 +4,12 @@ import { HeroParallax } from "../ui/hero-parallax";
 export const Hero = () => {
   const products: Product[] = [
     {
-      title: "Positive Change",
-      thumbnail: "/images/_DSC3090.webp",
-    },
-    {
       title: "Skills Training",
       thumbnail: "/images/_DSC2854.webp",
+    },
+    {
+      title: "Positive Change",
+      thumbnail: "/images/_DSC3090.webp",
     },
     {
       title: "Education Support",
@@ -24,11 +24,11 @@ export const Hero = () => {
       thumbnail: "/images/_DSC2927.webp",
     },
     {
-      title: "Life Skills",
+      title: "Community Building",
       thumbnail: "/images/_DSC2933.webp",
     },
     {
-      title: "Community Building",
+      title: "Life Skills",
       thumbnail: "/images/_DSC2991.webp",
     },
     {
@@ -36,11 +36,11 @@ export const Hero = () => {
       thumbnail: "/images/_DSC3013.webp",
     },
     {
-      title: "Support Network",
+      title: "Future Leaders",
       thumbnail: "/images/_DSC3017.webp",
     },
     {
-      title: "Future Leaders",
+      title: "Support Network",
       thumbnail: "/images/_DSC3026.webp",
     },
     {
@@ -50,7 +50,7 @@ export const Hero = () => {
   ];
 
   return (
-    <section
+    <div
       id="hero"
       aria-label="Reach Afrika - Building Communities Across Africa"
       className="relative"
@@ -75,6 +75,6 @@ export const Hero = () => {
           <li>Youth Empowerment and Leadership</li>
         </ul>
       </div>
-    </section>
+    </div>
   );
 };

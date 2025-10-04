@@ -21,9 +21,10 @@ export interface NavItemsProps {
   items: {
     name: string;
     link: string;
+    onClick?: () => void;
   }[];
   className?: string;
-  onItemClick?: () => void;
+  onItemClick?: (e: React.MouseEvent, item: { name: string; link: string; onClick?: () => void }) => void;
 }
 
 export interface MobileNavProps {

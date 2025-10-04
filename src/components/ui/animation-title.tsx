@@ -1,3 +1,4 @@
+import { AnimatedSection } from "./animated-section";
 import { Highlighter } from "./highlighter";
 import { cn } from "@/lib/utils";
 
@@ -5,7 +6,7 @@ interface AnimationTitleProps {
   className?: string;
   title: {
     preText?: string;
-    highlight: string;
+    highlight?: string;
     postText?: string;
   };
   subtitle?: string;
@@ -66,43 +67,50 @@ export const AnimationTitle = ({
   };
 
   return (
-    <div
-      className={cn("flex-center flex-col text-center gap-2 mb-16", className)}
-    >
-      {subtitle && (
-        <p className={cn("text-sm text-neutral-500", subtitleClassName)}>
-          {formatText(subtitle)}
-        </p>
-      )}
+    <AnimatedSection delay={0.3}>
+      <div
+        className={cn(
+          "flex-center flex-col text-center gap-2 mb-16",
+          className
+        )}
+      >
+        {subtitle && (
+          <p className={cn("text-sm text-neutral-500", subtitleClassName)}>
+            {formatText(subtitle)}
+          </p>
+        )}
 
-      <h1 className={cn("title", titleClassName)}>
-        {title.preText && formatText(title.preText)}
-        <Highlighter
-          action={action}
-          strokeWidth={strokeWidth}
-          iterations={iterations}
-          animationDuration={animationDuration}
-          padding={padding}
-          multiline={multiline}
-          inView={inView}
-          color={color}
-          className={highlightClassName}
-        >
-          {formatText(title.highlight)}
-        </Highlighter>
-        {title.postText && formatText(title.postText)}
-      </h1>
-
-      {description && (
-        <p
-          className={cn(
-            "max-w-2xl text-lg mt-4 pl-2 dark:text-neutral-200",
-            descriptionClassName
+        <h1 className={cn("title", titleClassName)}>
+          {title.preText && formatText(title.preText)}
+          {title.highlight && (
+            <Highlighter
+              action={action}
+              strokeWidth={strokeWidth}
+              iterations={iterations}
+              animationDuration={animationDuration}
+              padding={padding}
+              multiline={multiline}
+              inView={inView}
+              color={color}
+              className={highlightClassName}
+            >
+              {formatText(title.highlight)}
+            </Highlighter>
           )}
-        >
-          {formatText(description)}
-        </p>
-      )}
-    </div>
+          {title.postText && formatText(title.postText)}
+        </h1>
+
+        {description && (
+          <p
+            className={cn(
+              "max-w-2xl text-lg mt-4 pl-2 dark:text-neutral-200",
+              descriptionClassName
+            )}
+          >
+            {formatText(description)}
+          </p>
+        )}
+      </div>
+    </AnimatedSection>
   );
 };

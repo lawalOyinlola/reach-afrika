@@ -30,6 +30,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/base-select";
+import { ArrowUpRightIcon } from "@phosphor-icons/react";
 
 const formSchema = z.object({
   name: z
@@ -80,19 +81,38 @@ export default function ContactForm() {
     defaultValues: {
       name: "",
       email: "",
-      messageTypes: ["donate", "volunteer"],
+      messageTypes: [],
       message: "",
     },
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      // Simulate a successful contact form submission
-      console.log(values);
-      toast.success("Your message has been sent successfully!");
+      const to = "info@reachafrika.org";
+      const subjectBase = values.messageTypes[0]
+        ? items.find((i) => i.value === values.messageTypes[0])?.label ||
+          "Contact"
+        : "Contact";
+      const subject = `${subjectBase} - ${values.name}`;
+
+      const typeList = values.messageTypes
+        .map((val) => items.find((i) => i.value === val)?.label)
+        .filter(Boolean)
+        .join(", ");
+
+      const body = `Name: ${values.name}\nEmail: ${values.email}\nType: ${typeList}\n\nMessage:\n${values.message}`;
+
+      const mailto = `mailto:${encodeURIComponent(
+        to
+      )}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+        body
+      )}`;
+
+      window.location.href = mailto;
+      toast.success("Opening your email app to send the message...");
     } catch (error) {
-      console.error("Error submitting contact form", error);
-      toast.error("Failed to send your message. Please try again.");
+      console.error("Error constructing email link", error);
+      toast.error("Failed to open your email app. Please try again.");
     }
   }
 
@@ -209,8 +229,9 @@ export default function ContactForm() {
                   )}
                 />
 
-                <Button type="submit" className="w-full">
+                <Button type="submit" className="w-full group">
                   Send Message
+                  <ArrowUpRightIcon className="group-hover:translate-x-1 transition-transform duration-300" />
                 </Button>
               </div>
             </form>
