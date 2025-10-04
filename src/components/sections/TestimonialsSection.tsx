@@ -2,6 +2,7 @@ import { AnimationTitle } from "../ui/animation-title";
 import { Card, CardContent, CardDescription, CardFooter } from "../ui/card";
 import { useState } from "react";
 import { Skeleton } from "../ui/skeleton";
+import { StaggeredAnimation } from "../ui/staggered-animation";
 
 const testimonials = [
   {
@@ -9,7 +10,7 @@ const testimonials = [
       "The choir gave me hope when I had none. Music became my pathway to healing.",
     name: "Aminata Koroma",
     role: "GCGC Program Participant",
-    avatar: "/images/_DSC2927.webp",
+    avatar: "/avatars/_DSC3102.webp",
     rating: 5,
   },
   {
@@ -17,7 +18,7 @@ const testimonials = [
       "Through digital skills, I discovered my potential to lead and create change.",
     name: "Fatmata Sesay",
     role: "She Leads Digital Graduate",
-    avatar: "/images/_DSC2933.webp",
+    avatar: "/avatars/_DSC3006.webp",
     rating: 5,
   },
   {
@@ -25,26 +26,31 @@ const testimonials = [
       "Reach Afrika transformed my understanding of community and personal growth.",
     name: "Mohamed Bangura",
     role: "Skills for Life Alumni",
-    avatar: "/images/_DSC2991.webp",
+    avatar: "/avatars/_DSC3178.webp",
     rating: 5,
   },
 ];
 
 export const TestimonialsSection = () => {
   return (
-    <section className="py-20 px-4 bg-neutral-100 dark:bg-neutral-800">
+    <section className="py-20 px-4">
       <div className="max-w-7xl mx-auto">
         <AnimationTitle
           className="mb-16"
-          title={{ highlight: "Voices of change" }}
+          title={{ preText: "Voices of change" }}
           description="Stories that inspire and demonstrate our impact."
         />
 
-        <div className="grid md:grid-cols-3 gap-8 [grid-template-rows:1fr_auto]">
+        <StaggeredAnimation
+          staggerDelay={0.2}
+          className="grid md:grid-cols-3 gap-8 [grid-template-rows:1fr_auto]"
+        >
           {testimonials.map((testimonial, index) => (
             <Card
               key={index}
-              className="shadow-sm hover:shadow-lg transition-all duration-300 group grid [grid-template-rows:subgrid] row-span-2 bg-white dark:bg-neutral-700"
+              className="shadow-sm hover:shadow-lg transition-all duration-300 group grid [grid-template-rows:subgrid] row-span-2 bg-card"
+
+              // className="data-[state=open]:bg-card dark:data-[state=open]:bg-muted peer rounded-xl border-none px-7 py-1 data-[state=open]:border-none data-[state=open]:shadow-sm">
             >
               <CardContent>
                 <CardDescription className="text-md text-foreground leading-relaxed">
@@ -69,7 +75,7 @@ export const TestimonialsSection = () => {
               </CardFooter>
             </Card>
           ))}
-        </div>
+        </StaggeredAnimation>
       </div>
     </section>
   );

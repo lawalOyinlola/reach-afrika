@@ -5,10 +5,30 @@ import {
 } from "@phosphor-icons/react";
 import { AnimationTitle } from "../ui/animation-title";
 import ContactForm from "./ContactForm";
+import { AnimatedSection } from "../ui/animated-section";
+import { StaggeredAnimation } from "../ui/staggered-animation";
 
 export const ContactSection = () => {
+  const contactInfo = [
+    {
+      icon: EnvelopeSimpleIcon,
+      label: "Email",
+      value: "info@reachafrika.org",
+    },
+    {
+      icon: PhoneCallIcon,
+      label: "Phone",
+      value: "+232 79 566 771",
+    },
+    {
+      icon: MapPinIcon,
+      label: "Location",
+      value: "23 Main Peninsular Road, Goderich, Freetown, Sierra Leone",
+    },
+  ];
+
   return (
-    <section className="py-20 px-4 bg-white dark:bg-neutral-900">
+    <section className="py-20 px-4">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
@@ -18,49 +38,26 @@ export const ContactSection = () => {
               description="Join us in transforming lives across Africa. Whether you want to volunteer, donate, or partner with us, your support makes a difference."
             />
 
-            <div className="space-y-6">
-              <div className="flex items-end space-x-4">
-                <EnvelopeSimpleIcon size={40} weight="duotone" />
-
-                <div>
-                  <div className="font-semibold text-neutral-900 dark:text-white">
-                    Email
-                  </div>
-                  <div className="text-neutral-600 dark:text-neutral-400">
-                    info@reachafrika.org
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex items-end space-x-4">
-                <PhoneCallIcon size={40} weight="duotone" />
-
-                <div>
-                  <div className="font-semibold text-neutral-900 dark:text-white">
-                    Phone
-                  </div>
-                  <div className="text-neutral-600 dark:text-neutral-400">
-                    +232 79 566 771
+            <StaggeredAnimation className="space-y-6" staggerDelay={0.1}>
+              {contactInfo.map((info, index) => (
+                <div key={index} className="flex items-end space-x-4">
+                  <info.icon
+                    size={40}
+                    weight="duotone"
+                    color="var(--primary)"
+                  />
+                  <div>
+                    <div className="font-semibold">{info.label}</div>
+                    <div className="text-muted-foreground">{info.value}</div>
                   </div>
                 </div>
-              </div>
-
-              <div className="flex items-center space-x-4">
-                <MapPinIcon size={40} weight="duotone" />
-
-                <div>
-                  <div className="font-semibold text-neutral-900 dark:text-white">
-                    Location
-                  </div>
-                  <div className="text-neutral-600 dark:text-neutral-400">
-                    23 Main Peninsular Road, Goderich, Freetown, Sierra Leone
-                  </div>
-                </div>
-              </div>
-            </div>
+              ))}
+            </StaggeredAnimation>
           </div>
 
-          <ContactForm />
+          <AnimatedSection delay={0.4} direction="right">
+            <ContactForm />
+          </AnimatedSection>
         </div>
       </div>
     </section>

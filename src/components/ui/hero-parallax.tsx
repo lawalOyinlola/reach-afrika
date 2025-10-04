@@ -94,7 +94,7 @@ export const Header = () => {
         }}
         titleClassName="md:text-7xl leading-[1.1]"
         descriptionClassName="text-base md:text-xl"
-        description="Building skills, fostering hope, and creating lasting change that transforms young lives across Africa."
+        description="Building skills, fostering hope, and creating lasting change that transforms young lives."
         highlightProps={{
           action: "highlight",
           padding: 10,
@@ -121,10 +121,7 @@ export const ProductCard = ({
       key={product.title}
       className="group/product h-96 w-[30rem] relative shrink-0 rounded-xl overflow-hidden"
     >
-      <a
-        href={product?.link ?? "#"}
-        className="block group-hover/product:shadow-2xl"
-      >
+      <div className="block group-hover/product:shadow-2xl">
         {!isLoaded && <Skeleton className="absolute inset-0 h-full w-full" />}
         <img
           src={product.thumbnail}
@@ -136,7 +133,7 @@ export const ProductCard = ({
           alt={product.title}
           onLoad={() => setIsLoaded(true)}
         />
-      </a>
+      </div>
       <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black via-black/50 to-transparent pt-10 p-4 group-hover/product:opacity-100 opacity-0 transition-all duration-600">
         <h2 className="text-white text-lg font-unbounded font-semibold translate-y-20 transition-all duration-600 group-hover/product:translate-y-0">
           {product.title}

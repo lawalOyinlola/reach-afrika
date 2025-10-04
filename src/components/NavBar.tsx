@@ -1,25 +1,24 @@
+import { useState } from "react";
+import { Link } from "react-router";
 import {
   Navbar as NavbarComponent,
   NavBody,
   NavItems,
   MobileNav,
-  NavbarButton,
   MobileNavHeader,
   MobileNavToggle,
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
-import { useState } from "react";
 import { AnimatedThemeToggler } from "./ui/animated-theme-toggler";
 import { Logo } from "./logo";
-import { Link } from "react-router";
+import { Button } from "./ui/button";
 
 export function Navbar() {
   const navItems = [
-    { name: "About", link: "#about" },
+    { name: "About", link: "/about" },
     { name: "Programs", link: "#programs" },
     { name: "Impact", link: "#impact" },
-    { name: "Features", link: "#features" },
-    { name: "Contact", link: "#contact" },
+    { name: "Volunteer", link: "#contact" },
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -32,10 +31,10 @@ export function Navbar() {
           <Logo />
         </Link>
         <NavItems items={navItems} />
-        <div className="flex items-center gap-4">
-          <a href="/donate" className="hidden md:inline-block">
-            <NavbarButton variant="primary">Donate</NavbarButton>
-          </a>
+        <div className="flex items-center gap-2">
+          <Button size="lg" className="max-md:hidden z-2" asChild>
+            <Link to="/donate">Donate</Link>
+          </Button>
           <AnimatedThemeToggler className="z-20" />
         </div>
       </NavBody>
@@ -67,9 +66,12 @@ export function Navbar() {
           <div className="flex w-full flex-col gap-4">
             <AnimatedThemeToggler className="z-20" text="Switch Theme" />
             <a href="/donate" onClick={() => setIsMobileMenuOpen(false)}>
-              <NavbarButton variant="primary" className="w-full">
+              {/* <NavbarButton variant="primary" className="w-full">
                 Donate
-              </NavbarButton>
+              </NavbarButton> */}
+              <Button size="lg" className="w-full">
+                Donate
+              </Button>
             </a>
           </div>
         </MobileNavMenu>

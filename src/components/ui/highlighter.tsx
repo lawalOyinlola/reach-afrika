@@ -7,7 +7,7 @@ import type { HighlighterProps } from "../../types";
 export function Highlighter({
   children,
   action = "highlight",
-  color = "var(--primary)",
+  color = "var(--secondary)",
   strokeWidth = 1.5,
   animationDuration = 600,
   iterations = 2,
@@ -82,12 +82,7 @@ export function Highlighter({
   ]);
 
   return (
-    <span
-      ref={elementRef}
-      className={`relative inline-block bg-transparent ${
-        action === "highlight" ? "text-background" : ""
-      }`}
-    >
+    <span ref={elementRef} className="relative inline-block bg-transparent">
       {children}
     </span>
   );

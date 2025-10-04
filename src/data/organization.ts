@@ -52,7 +52,7 @@ export const organizationProfile: OrganizationProfile = {
   alternateName: ["Reach Africa", "Reach Afrika NGO"],
   description:
     "Reach Afrika is a youth-focused NGO empowering young people and strengthening communities in Sierra Leone through music, education, leadership, and economic empowerment.",
-  founded: "2015-08-15",
+  founded: "15th August 2015",
   motto: "Empowering Youth, Transforming Africa",
   mission:
     "To empower youth and communities through music, education, leadership, and economic empowerment initiatives that foster resilience, inclusivity, and sustainable growth.",
