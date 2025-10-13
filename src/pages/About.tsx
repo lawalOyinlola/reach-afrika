@@ -5,6 +5,11 @@ import Features from "@/components/features-10";
 import CallToAction from "@/components/call-to-action";
 import { ContactSection } from "@/components/sections/ContactSection";
 
+/**
+ * Renders the About page for Reach Afrika, including SEO metadata, a hero/content section, core values/features, a call-to-action, and a contact section.
+ *
+ * @returns The About page as JSX elements.
+ */
 export default function About() {
   const title = "About Us - Reach Afrika";
   const description =

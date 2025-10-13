@@ -2,6 +2,14 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
+/**
+ * Renders a styled HTML input element with default accessibility and interaction styles.
+ *
+ * @param className - Additional CSS class names appended to the component's default classes
+ * @param type - The input `type` attribute (for example `"text"`, `"password"`, `"email"`)
+ * @param props - Additional props forwarded to the underlying `<input>` element
+ * @returns The input element with styling, accessibility attributes, and forwarded props applied
+ */
 function Input({ className, type, ...props }: React.ComponentProps<"input">) {
   return (
     <input

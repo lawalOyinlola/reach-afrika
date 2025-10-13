@@ -39,6 +39,13 @@ const members = [
   },
 ];
 
+/**
+ * Renders the "Team" section containing a header, descriptive copy, and a responsive gallery of team member cards.
+ *
+ * Each card displays a member avatar, name and index badge; the member role and a "Linktree" link are revealed on hover.
+ *
+ * @returns The JSX section element containing the team header, description, and responsive grid of member cards.
+ */
 export default function TeamSection() {
   return (
     <section className="bg-gray-50 py-16 md:py-32 dark:bg-transparent">

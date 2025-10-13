@@ -10,6 +10,13 @@ import {
 import { generateStructuredData } from "./lib/seo";
 import { ScrollProgress } from "./components/ui/scroll-progress";
 
+/**
+ * Top-level application component that configures global providers, SEO metadata, performance optimizations, and routing.
+ *
+ * Renders document head management, resource hints, critical CSS, SEO metadata and structured data, a performance optimizer wrapper with scroll progress, and the app router.
+ *
+ * @returns The root React element for the application
+ */
 function App() {
   return (
     <HelmetProvider>

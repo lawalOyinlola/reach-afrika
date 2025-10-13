@@ -15,6 +15,15 @@ import { SectionLink } from "./ui/section-link";
 import { SmartNavItems } from "./ui/smart-nav-items";
 import { navItems } from "@/lib/navigation";
 
+/**
+ * Renders a responsive navigation bar with desktop and mobile variants, including the site logo, navigation items, a theme toggler, and a donate action.
+ *
+ * The component manages internal state for the mobile menu and provides:
+ * - Desktop layout: logo link to "/", rendered navigation items, a donate button (hidden on small screens), and a theme toggler.
+ * - Mobile layout: header with logo and toggle, a slide-out menu populated from `navItems` (section links use `SectionLink`), a theme toggler, and a full-width donate button. Menu closes when an item or the donate link is clicked or when the menu requests close.
+ *
+ * @returns The React element for the responsive Navbar UI
+ */
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 

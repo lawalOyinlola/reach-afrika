@@ -11,6 +11,19 @@ interface OptimizedImageProps
   priority?: boolean; // Skip lazy loading for above-the-fold images
 }
 
+/**
+ * Renders an image with lazy loading and a skeleton placeholder until the image is loaded.
+ *
+ * The image starts loading when it is about to enter the viewport unless marked as priority,
+ * in which case it loads immediately. The skeleton is displayed until the image finishes loading.
+ *
+ * @param priority - If `true`, the image loads immediately instead of lazily.
+ * @param src - The source URL of the image.
+ * @param alt - The alternative text description for the image.
+ * @param className - Optional additional CSS classes for the wrapper and image.
+ * @param skeletonClassName - Optional CSS classes for the skeleton placeholder.
+ * @returns The rendered image component with loading optimizations.
+ */
 export function OptimizedImage({
   src,
   alt,

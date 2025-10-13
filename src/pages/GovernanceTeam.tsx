@@ -2,6 +2,9 @@
 import { SEOHead } from "@/components/seo/SEOHead";
 import { organizationProfile } from "@/data/organization";
 
+/**
+ * Renders the Governance & Team page showcasing Reach Afrika's governance structure, leadership, core values, and policies.
+ */
 export default function GovernanceTeam() {
   const title = "Governance & Team";
   const description =

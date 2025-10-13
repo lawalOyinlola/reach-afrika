@@ -7,6 +7,13 @@ import { ContactSection } from "@/components/sections/ContactSection";
 import CallToAction from "@/components/call-to-action";
 import FAQsThree from "@/components/faqs-3";
 
+/**
+ * Renders the homepage composed of anchored sections for the site's content.
+ *
+ * Sections included: `hero`, `about`, `programs`, `impact`, `cta`, `faqs`, `testimonials`, and `contact`.
+ *
+ * @returns The root JSX element containing the assembled page sections.
+ */
 export default function Home() {
   return (
     <div>

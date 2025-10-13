@@ -61,6 +61,11 @@ const items = [
   { label: "Feedback", value: "feedback" },
 ];
 
+/**
+ * Renders a contact form for users to send a message with name, email, message types, and message content.
+ *
+ * The form validates input fields and opens the user's email client with the message data pre-filled upon submission.
+ */
 export default function ContactForm() {
   const renderValue = (value: string[]) => {
     const MAX_COUNT = 2;

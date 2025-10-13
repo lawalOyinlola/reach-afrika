@@ -4,6 +4,13 @@ import Features from "@/components/features-tailark";
 import { AnimationTitle } from "@/components/ui/animation-title";
 import { ContactSection } from "@/components/sections/ContactSection";
 
+/**
+ * Render the Donate page for Reach Afrika with SEO metadata, an animated title, a features section, and a contact section.
+ *
+ * The page includes composed components for SEO head tags, an animated heading with descriptive text, a features showcase, and a dedicated contact section.
+ *
+ * @returns The React element tree for the Donate page.
+ */
 export default function Donate() {
   const title = "Donate to Reach Afrika";
   const description =
