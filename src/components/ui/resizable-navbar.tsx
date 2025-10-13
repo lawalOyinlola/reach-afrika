@@ -191,9 +191,14 @@ export const MobileNavToggle = ({
   isOpen: boolean;
   onClick: () => void;
 }) => {
-  return isOpen ? (
-    <XIcon size={24} onClick={onClick} />
-  ) : (
-    <ListIcon size={24} onClick={onClick} />
+  return (
+    <button
+      onClick={onClick}
+      aria-label={isOpen ? "Close menu" : "Open menu"}
+      aria-expanded={isOpen}
+      className="z-20 flex items-center gap-2"
+    >
+      {isOpen ? <XIcon size={24} /> : <ListIcon size={24} />}
+    </button>
   );
 };

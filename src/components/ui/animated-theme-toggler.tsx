@@ -93,6 +93,7 @@ export const AnimatedThemeToggler = ({
       ref={buttonRef}
       onClick={toggleTheme}
       className={cn(className, "flex items-center gap-2")}
+      aria-label="Toggle theme"
     >
       {text && <span className="text-sm">{text}</span>}
       {isDark ? <SunIcon /> : <MoonStarsIcon />}

@@ -1,4 +1,4 @@
-import Layout from "@/components/Layout";
+// import Layout from "@/components/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
 import ContentSection from "@/components/content-2";
 import Features from "@/components/features-10";
@@ -11,7 +11,7 @@ export default function About() {
     "Learn about Reach Afrika, a youth-focused NGO empowering communities across Sierra Leone through education, leadership, and sustainable development since 2015.";
 
   return (
-    <Layout>
+    <>
       <SEOHead
         title={title}
         description={description}
@@ -30,7 +30,9 @@ export default function About() {
 
       <CallToAction />
 
-      <ContactSection />
-    </Layout>
+      <section id="contact">
+        <ContactSection />
+      </section>
+    </>
   );
 }

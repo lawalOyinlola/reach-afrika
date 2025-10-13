@@ -1,6 +1,5 @@
-import { useEffect, useState, Suspense, lazy } from "react";
-import { BrowserRouter, Routes, Route } from "react-router";
-import { ErrorBoundary } from "./components/ErrorBoundary";
+import { RouterProvider } from "react-router";
+import { router } from "./routes/route";
 import { HelmetProvider } from "react-helmet-async";
 import { SEOHead, StructuredData } from "./components/seo/SEOHead";
 import {
@@ -9,33 +8,9 @@ import {
   CriticalCSS,
 } from "./components/seo/PerformanceOptimizer";
 import { generateStructuredData } from "./lib/seo";
-import StartupLoadingScreen from "./components/ui/startup-loading-screen";
 import { ScrollProgress } from "./components/ui/scroll-progress";
-import { Toaster } from "sonner";
-
-// Lazy load page components for code splitting
-const Home = lazy(() => import("./pages/Home"));
-const About = lazy(() => import("./pages/About"));
-const GovernanceTeam = lazy(() => import("./pages/GovernanceTeam"));
-const Donate = lazy(() => import("./pages/Donate"));
-const NotFound = lazy(() => import("./pages/NotFound"));
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // Simulate loading time
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2500);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (isLoading) {
-    return <StartupLoadingScreen />;
-  }
-
   return (
     <HelmetProvider>
       <ResourceHints />
@@ -49,20 +24,7 @@ function App() {
 
       <PerformanceOptimizer>
         <ScrollProgress />
-        <BrowserRouter>
-          <ErrorBoundary>
-            <Suspense fallback={<StartupLoadingScreen />}>
-              <Toaster />
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/team" element={<GovernanceTeam />} />
-                <Route path="/donate" element={<Donate />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </Suspense>
-          </ErrorBoundary>
-        </BrowserRouter>
+        <RouterProvider router={router} />
       </PerformanceOptimizer>
     </HelmetProvider>
   );

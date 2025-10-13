@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import {
   motion,
   useScroll,
@@ -8,7 +8,7 @@ import {
 } from "motion/react";
 import { AnimationTitle } from "./animation-title";
 import type { Product } from "../../types";
-import { Skeleton } from "./skeleton";
+import { OptimizedImage } from "./optimized-image";
 
 export const HeroParallax = ({ products }: { products: Product[] }) => {
   const firstRow = products.slice(0, 5);
@@ -112,7 +112,6 @@ export const ProductCard = ({
   product: Product;
   translate: MotionValue<number>;
 }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
   return (
     <motion.div
       style={{
@@ -122,16 +121,14 @@ export const ProductCard = ({
       className="group/product h-96 w-[30rem] relative shrink-0 rounded-xl overflow-hidden"
     >
       <div className="block group-hover/product:shadow-2xl">
-        {!isLoaded && <Skeleton className="absolute inset-0 h-full w-full" />}
-        <img
+        <OptimizedImage
           src={product.thumbnail}
-          height="600"
-          width="600"
-          className={`object-cover absolute h-full w-full inset-0 transition-all duration-400 ${
-            isLoaded ? "opacity-100 group-hover/product:scale-105" : "opacity-0"
-          }`}
           alt={product.title}
-          onLoad={() => setIsLoaded(true)}
+          width={600}
+          height={600}
+          priority={product.priority || false}
+          className="object-cover absolute h-full w-full inset-0 group-hover/product:scale-105 transition-transform duration-400"
+          skeletonClassName="h-full w-full"
         />
       </div>
       <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black via-black/50 to-transparent pt-10 p-4 group-hover/product:opacity-100 opacity-0 transition-all duration-600">
