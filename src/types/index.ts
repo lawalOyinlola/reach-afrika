@@ -3,6 +3,7 @@ export interface Product {
   title: string;
   link?: string;
   thumbnail: string;
+  priority?: boolean; // For above-the-fold images (skip lazy loading)
 }
 
 // Navbar types
@@ -24,7 +25,10 @@ export interface NavItemsProps {
     onClick?: () => void;
   }[];
   className?: string;
-  onItemClick?: (e: React.MouseEvent, item: { name: string; link: string; onClick?: () => void }) => void;
+  onItemClick?: (
+    e: React.MouseEvent,
+    item: { name: string; link: string; onClick?: () => void }
+  ) => void;
 }
 
 export interface MobileNavProps {

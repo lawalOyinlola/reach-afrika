@@ -1,34 +1,36 @@
+import { Link } from "react-router";
+import { SectionLink } from "./ui/section-link";
+import { footerLinks } from "@/lib/navigation";
 import { LogoText } from "@/components/logo";
-
-const links = [
-  { title: "About", href: "#about" },
-  { title: "Programs", href: "#programs" },
-  { title: "Impact", href: "#impact" },
-  { title: "Features", href: "#features" },
-  { title: "Testimonials", href: "#testimonials" },
-  { title: "Contact", href: "#contact" },
-  { title: "Governance & Team", href: "/governance" },
-  { title: "Donate", href: "/donate" },
-];
 
 export const AppFooter = () => {
   return (
     <footer className="py-12 md:py-20 bg-white/80 dark:bg-neutral-950/80">
       <div className="mx-auto max-w-5xl px-6">
-        <a href="/" aria-label="go home" className="mx-auto block size-fit">
+        <Link to="/" aria-label="go home" className="mx-auto block size-fit">
           <LogoText />
-        </a>
+        </Link>
 
         <div className="my-8 flex flex-wrap justify-center gap-6 text-sm">
-          {links.map((link, index) => (
-            <a
-              key={index}
-              href={link.href}
-              className="text-muted-foreground hover:text-primary block duration-150"
-            >
-              <span>{link.title}</span>
-            </a>
-          ))}
+          {footerLinks.map((link, index) =>
+            link.type === "section" ? (
+              <SectionLink
+                key={index}
+                sectionId={link.href}
+                className="text-muted-foreground hover:text-primary block duration-150"
+              >
+                <span>{link.title}</span>
+              </SectionLink>
+            ) : (
+              <Link
+                key={index}
+                to={link.href}
+                className="text-muted-foreground hover:text-primary block duration-150"
+              >
+                <span>{link.title}</span>
+              </Link>
+            )
+          )}
         </div>
         <div className="my-8 flex flex-wrap justify-center gap-6 text-sm">
           <a

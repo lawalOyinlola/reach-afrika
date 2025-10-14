@@ -1,7 +1,8 @@
 import { SEOHead } from "@/components/seo/SEOHead";
-import Layout from "@/components/Layout";
+// import Layout from "@/components/Layout";
 import Features from "@/components/features-tailark";
 import { AnimationTitle } from "@/components/ui/animation-title";
+import { ContactSection } from "@/components/sections/ContactSection";
 
 export default function Donate() {
   const title = "Donate to Reach Afrika";
@@ -9,7 +10,7 @@ export default function Donate() {
     "Support our mission to empower youth across Sierra Leone through education, leadership, and economic opportunity.";
 
   return (
-    <Layout>
+    <>
       <SEOHead
         title={title}
         description={description}
@@ -26,6 +27,9 @@ export default function Donate() {
         />
         <Features />
       </main>
-    </Layout>
+      <section id="contact">
+        <ContactSection />
+      </section>
+    </>
   );
 }

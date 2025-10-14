@@ -104,12 +104,14 @@ export const Logo = ({
     <div className="z-20 flex-center p-1 ">
       <img
         src="/logo/logo-words.png"
+        alt="Reach Afrika Logo"
         width={widthValue}
         height={heightValue}
         className="hidden dark:block"
       />
       <img
         src="/logo/logo-words-dark-removebg.png"
+        alt="Reach Afrika Logo"
         width={widthValue}
         height={heightValue}
         className="block dark:hidden"
@@ -125,22 +127,27 @@ export const LogoIcon = ({
   width?: number;
   height?: number;
 }) => {
-  const widthValue = width || 30;
-  const heightValue = height || 40;
+  // Preserve aspect ratio: 145x200 (0.725) for light, 325x460 (0.707) for dark
+  const widthValue = width || 32;
+  const heightValue = height || 44;
 
   return (
     <div className="z-20 flex-center">
       <img
         src="/logo/logo-icon.png"
+        alt="Reach Afrika Icon"
         width={widthValue}
         height={heightValue}
-        className="hidden dark:block"
+        style={{ aspectRatio: "325 / 460" }}
+        className="hidden dark:block object-contain"
       />
       <img
         src="/logo/logo-icon-dark-removebg.png"
+        alt="Reach Afrika Icon"
         width={widthValue}
         height={heightValue}
-        className="block dark:hidden"
+        style={{ aspectRatio: "145 / 200" }}
+        className="block dark:hidden object-contain"
       />
     </div>
   );

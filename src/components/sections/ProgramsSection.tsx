@@ -5,10 +5,9 @@ import {
   ShuffleAngularIcon,
 } from "@phosphor-icons/react";
 import { AnimationTitle } from "../ui/animation-title";
-import { useState } from "react";
-import { Skeleton } from "../ui/skeleton";
 import { AnimatedSection } from "../ui/animated-section";
 import { Link } from "react-router";
+import { OptimizedImage } from "../ui/optimized-image";
 
 interface Programs {
   icon?: React.ElementType;
@@ -38,7 +37,7 @@ const programs: Programs[] = [
     cta: "Discover",
     background: "bg-gradient-to-br from-teal-600 to-blue-600",
     rowSpan: 1, // Standard height
-    image: "/images/skills-for-life.png",
+    image: "/images/skills-for-life.webp",
   },
   {
     category: "Digital",
@@ -47,7 +46,7 @@ const programs: Programs[] = [
     cta: "Explore",
     background: "bg-gradient-to-br from-orange-500 to-pink-500",
     rowSpan: 2, // Taller card
-    image: "/images/she-leads.png",
+    image: "/images/she-leads.webp",
   },
   {
     category: "Breakthrough",
@@ -56,7 +55,7 @@ const programs: Programs[] = [
     cta: "Learn",
     background: "bg-gradient-to-br from-amber-700 to-brown-600",
     rowSpan: 2, // Taller card
-    image: "/images/bucket-to-breakthrough.png",
+    image: "/images/bucket-to-breakthrough.webp",
   },
   {
     icon: ShuffleAngularIcon,
@@ -65,7 +64,7 @@ const programs: Programs[] = [
     cta: "Explore",
     background: "bg-gradient-to-br from-amber-600 to-orange-500",
     rowSpan: 1, // Standard height
-    image: "/images/change-conference.png",
+    image: "/images/change-conference.webp",
   },
   {
     icon: BrainIcon,
@@ -91,22 +90,25 @@ export const ProgramsSection = () => {
           description="Six focused initiatives driving youth empowerment in Sierra Leone."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[240px]">
+        <AnimatedSection
+          direction="up"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[240px]"
+        >
           {programs.map((program, index) => {
             const rowSpanClass =
               program.rowSpan === 2 ? "row-span-2" : "row-span-1";
 
             return (
-              <AnimatedSection
-                direction={`${
-                  index === 0 || index === 4
-                    ? "right"
-                    : index === 5 || index === 2
-                    ? "left"
-                    : index === 1
-                    ? "down"
-                    : "up"
-                }`}
+              <div
+                // direction={`${
+                //   index === 0 || index === 4
+                //     ? "right"
+                //     : index === 5 || index === 2
+                //     ? "left"
+                //     : index === 1
+                //     ? "down"
+                //     : "up"
+                // }`}
                 key={index}
                 className={`relative rounded-2xl overflow-hidden group cursor-pointer ${program.background} col-span-1 ${rowSpanClass} transition-all duration-300 hover:shadow-2xl`}
               >
@@ -160,27 +162,23 @@ export const ProgramsSection = () => {
                     </Link>
                   </div>
                 </div>
-              </AnimatedSection>
+              </div>
             );
           })}
-        </div>
+        </AnimatedSection>
       </div>
     </div>
   );
 };
 
 const ProgramImage = ({ src, alt }: { src: string; alt: string }) => {
-  const [loaded, setLoaded] = useState(false);
   return (
     <div className="absolute inset-0">
-      {!loaded && <Skeleton className="absolute inset-0 w-full h-full" />}
-      <img
+      <OptimizedImage
         src={src}
         alt={alt}
-        className={`w-full h-full object-cover transition-transform duration-300 ${
-          loaded ? "group-hover:scale-105" : ""
-        } ${loaded ? "opacity-100" : "opacity-0"}`}
-        onLoad={() => setLoaded(true)}
+        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        skeletonClassName="w-full h-full"
       />
       <div className="absolute inset-0 bg-black/40"></div>
     </div>

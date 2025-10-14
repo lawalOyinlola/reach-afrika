@@ -6,46 +6,57 @@ export const Hero = () => {
     {
       title: "Skills Training",
       thumbnail: "/images/_DSC2854.webp",
+      priority: true, // Above the fold
     },
     {
       title: "Positive Change",
       thumbnail: "/images/_DSC3090.webp",
+      priority: true, // Above the fold
     },
     {
       title: "Education Support",
       thumbnail: "/images/_DSC2874.webp",
+      priority: true, // Above the fold
     },
     {
       title: "Mentorship Programs",
       thumbnail: "/images/_DSC2886.webp",
+      priority: true, // LCP candidate - most important!
     },
     {
       title: "Career Guidance",
       thumbnail: "/images/_DSC2927.webp",
+      priority: true, // Above the fold
     },
     {
       title: "Community Building",
       thumbnail: "/images/_DSC2933.webp",
+      priority: true,
     },
     {
       title: "Life Skills",
       thumbnail: "/images/_DSC2991.webp",
+      priority: true,
     },
     {
       title: "Empowerment",
       thumbnail: "/images/_DSC3013.webp",
+      priority: true,
     },
     {
       title: "Future Leaders",
       thumbnail: "/images/_DSC3017.webp",
+      priority: true,
     },
     {
       title: "Support Network",
       thumbnail: "/images/_DSC3026.webp",
+      priority: true,
     },
     {
       title: "Community Impact",
       thumbnail: "/images/_DSC2813.webp",
+      priority: true,
     },
   ];
 

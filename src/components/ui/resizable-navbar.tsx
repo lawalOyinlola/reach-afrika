@@ -191,9 +191,20 @@ export const MobileNavToggle = ({
   isOpen: boolean;
   onClick: () => void;
 }) => {
-  return isOpen ? (
-    <XIcon size={24} onClick={onClick} />
-  ) : (
-    <ListIcon size={24} onClick={onClick} />
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    onClick();
+  };
+
+  return (
+    <button
+      type="button"
+      onClick={handleClick}
+      aria-label={isOpen ? "Close menu" : "Open menu"}
+      aria-expanded={isOpen}
+      className="z-20 flex items-center gap-2"
+    >
+      {isOpen ? <XIcon size={24} /> : <ListIcon size={24} />}
+    </button>
   );
 };

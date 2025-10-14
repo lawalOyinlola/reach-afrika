@@ -1,4 +1,4 @@
-import Layout from "@/components/Layout";
+// import Layout from "@/components/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { organizationProfile } from "@/data/organization";
 
@@ -8,7 +8,7 @@ export default function GovernanceTeam() {
     "Meet the governance structure and leadership team at Reach Afrika, driving transparency, accountability, and impact.";
 
   return (
-    <Layout>
+    <>
       <SEOHead title={title} description={description} />
       <main className="container mx-auto px-4 py-12">
         <header className="mb-8">
@@ -48,6 +48,6 @@ export default function GovernanceTeam() {
           </ul>
         </section>
       </main>
-    </Layout>
+    </>
   );
 }

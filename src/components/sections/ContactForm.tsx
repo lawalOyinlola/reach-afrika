@@ -142,6 +142,7 @@ export default function ContactForm() {
                           placeholder="John Doe"
                           type="text"
                           autoComplete="name"
+                          aria-label="Name"
                           {...field}
                         />
                       </FormControl>
@@ -163,6 +164,7 @@ export default function ContactForm() {
                           placeholder="johndoe@mail.com"
                           type="email"
                           autoComplete="email"
+                          aria-label="Email"
                           {...field}
                         />
                       </FormControl>
@@ -183,8 +185,13 @@ export default function ContactForm() {
                           multiple
                           value={field.value}
                           onValueChange={field.onChange}
+                          aria-label="Message Type"
                         >
-                          <SelectTrigger className="w-full" size="lg">
+                          <SelectTrigger
+                            className="w-full"
+                            size="lg"
+                            aria-label="Message Type"
+                          >
                             <SelectValue
                               className="truncate"
                               placeholder="Select message type"
@@ -194,7 +201,11 @@ export default function ContactForm() {
                           </SelectTrigger>
                           <SelectContent>
                             {items.map((item) => (
-                              <SelectItem key={item.value} value={item.value}>
+                              <SelectItem
+                                key={item.value}
+                                value={item.value}
+                                aria-label={item.label}
+                              >
                                 {item.label}
                               </SelectItem>
                             ))}
@@ -221,6 +232,7 @@ export default function ContactForm() {
                           className="resize-none max-h-28 overflow-y-auto"
                           rows={5}
                           maxLength={2000}
+                          aria-label="Message"
                           {...field}
                         />
                       </FormControl>
@@ -229,7 +241,11 @@ export default function ContactForm() {
                   )}
                 />
 
-                <Button type="submit" className="w-full group">
+                <Button
+                  type="submit"
+                  className="w-full group"
+                  aria-label="Send Message"
+                >
                   Send Message
                   <ArrowUpRightIcon className="group-hover:translate-x-1 transition-transform duration-300" />
                 </Button>
