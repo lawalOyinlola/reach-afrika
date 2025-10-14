@@ -127,7 +127,7 @@ export const LogoIcon = ({
   width?: number;
   height?: number;
 }) => {
-  // Preserve aspect ratio: 145x200 (0.725) for dark, 325x460 (0.707) for light
+  // Preserve aspect ratio: 145x200 (0.725) for light, 325x460 (0.707) for dark
   const widthValue = width || 32;
   const heightValue = height || 44;
 

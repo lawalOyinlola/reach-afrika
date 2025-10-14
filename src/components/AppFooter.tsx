@@ -1,7 +1,7 @@
-import { LogoText } from "@/components/logo";
 import { Link } from "react-router";
 import { SectionLink } from "./ui/section-link";
 import { footerLinks } from "@/lib/navigation";
+import { LogoText } from "@/components/logo";
 
 export const AppFooter = () => {
   return (

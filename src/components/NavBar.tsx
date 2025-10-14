@@ -57,7 +57,7 @@ export function Navbar() {
               <SectionLink
                 key={`mobile-link-${idx}`}
                 sectionId={item.link}
-                className="relative text-neutral-600 dark:text-neutral-300"
+                className="relative text-neutral-600 dark:text-neutral-300 w-full"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 <span className="block">{item.name}</span>
@@ -67,7 +67,7 @@ export function Navbar() {
                 key={`mobile-link-${idx}`}
                 to={item.link}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="relative text-neutral-600 dark:text-neutral-300"
+                className="relative text-neutral-600 dark:text-neutral-300 w-full"
               >
                 <span className="block">{item.name}</span>
               </Link>

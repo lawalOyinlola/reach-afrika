@@ -1,5 +1,3 @@
-"use client";
-
 import { AnimatedLogoText } from "@/components/logo";
 import { cn } from "@/lib/utils";
 

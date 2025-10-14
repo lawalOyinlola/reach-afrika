@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { RouterProvider } from "react-router";
 import { router } from "./routes/route";
 import { HelmetProvider } from "react-helmet-async";
@@ -9,6 +10,7 @@ import {
 } from "./components/seo/PerformanceOptimizer";
 import { generateStructuredData } from "./lib/seo";
 import { ScrollProgress } from "./components/ui/scroll-progress";
+import StartupLoadingScreen from "./components/ui/startup-loading-screen";
 
 function App() {
   return (
@@ -24,7 +26,9 @@ function App() {
 
       <PerformanceOptimizer>
         <ScrollProgress />
-        <RouterProvider router={router} />
+        <Suspense fallback={<StartupLoadingScreen />}>
+          <RouterProvider router={router} />
+        </Suspense>
       </PerformanceOptimizer>
     </HelmetProvider>
   );

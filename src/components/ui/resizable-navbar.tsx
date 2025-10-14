@@ -191,9 +191,15 @@ export const MobileNavToggle = ({
   isOpen: boolean;
   onClick: () => void;
 }) => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    onClick();
+  };
+
   return (
     <button
-      onClick={onClick}
+      type="button"
+      onClick={handleClick}
       aria-label={isOpen ? "Close menu" : "Open menu"}
       aria-expanded={isOpen}
       className="z-20 flex items-center gap-2"

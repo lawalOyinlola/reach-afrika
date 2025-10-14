@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { Skeleton } from "./skeleton";
+import type { ImgHTMLAttributes } from "react";
 
-interface OptimizedImageProps
-  extends React.ImgHTMLAttributes<HTMLImageElement> {
+interface OptimizedImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   src: string;
   alt: string;
   className?: string;

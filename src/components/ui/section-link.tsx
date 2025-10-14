@@ -1,4 +1,3 @@
-import { Link } from "react-router";
 import { useSmartNavigation } from "@/hooks/useSmartNavigation";
 import { cn } from "@/lib/utils";
 
@@ -9,12 +8,6 @@ interface SectionLinkProps {
   onClick?: () => void; // For closing mobile menu, etc.
 }
 
-/**
- * Smart section link component
- * - Uses Link for SEO benefits
- * - Smoothly scrolls on home page
- * - Navigates + scrolls when on other pages
- */
 export const SectionLink = ({
   sectionId,
   children,
@@ -23,14 +16,20 @@ export const SectionLink = ({
 }: SectionLinkProps) => {
   const { navigateToSection } = useSmartNavigation();
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     navigateToSection(sectionId, e);
     onClick?.(); // Call additional onClick if provided (e.g., close mobile menu)
   };
 
   return (
-    <Link to={`/#${sectionId}`} onClick={handleClick} className={cn(className)}>
+    <button
+      onClick={handleClick}
+      className={cn(
+        "text-left cursor-pointer bg-transparent border-none p-0 font-inherit",
+        className
+      )}
+    >
       {children}
-    </Link>
+    </button>
   );
 };

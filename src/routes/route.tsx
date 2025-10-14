@@ -1,8 +1,7 @@
 import { lazy, Suspense } from "react";
 import { createBrowserRouter } from "react-router";
 import Layout from "@/components/Layout";
-import StartupLoadingScreen from "@/components/ui/startup-loading-screen";
-// import PageLoader from "@/components/ui/page-loader";
+import PageLoader from "@/components/ui/page-loader";
 
 // Lazy load page components for code splitting
 const Home = lazy(() => import("@/pages/Home"));
@@ -11,8 +10,11 @@ const GovernanceTeam = lazy(() => import("@/pages/GovernanceTeam"));
 const Donate = lazy(() => import("@/pages/Donate"));
 const NotFound = lazy(() => import("@/pages/NotFound"));
 
-// Loading fallback component
-
+/**
+ * Router configuration with lazy-loaded routes
+ * Uses PageLoader for route transitions (lighter, non-intrusive)
+ * StartupLoadingScreen is reserved for initial app load in App.tsx
+ */
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -21,7 +23,7 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: (
-          <Suspense fallback={<StartupLoadingScreen />}>
+          <Suspense fallback={<PageLoader />}>
             <Home />
           </Suspense>
         ),
@@ -29,7 +31,7 @@ export const router = createBrowserRouter([
       {
         path: "/about",
         element: (
-          <Suspense fallback={<StartupLoadingScreen />}>
+          <Suspense fallback={<PageLoader />}>
             <About />
           </Suspense>
         ),
@@ -37,7 +39,7 @@ export const router = createBrowserRouter([
       {
         path: "/team",
         element: (
-          <Suspense fallback={<StartupLoadingScreen />}>
+          <Suspense fallback={<PageLoader />}>
             <GovernanceTeam />
           </Suspense>
         ),
@@ -45,7 +47,7 @@ export const router = createBrowserRouter([
       {
         path: "/donate",
         element: (
-          <Suspense fallback={<StartupLoadingScreen />}>
+          <Suspense fallback={<PageLoader />}>
             <Donate />
           </Suspense>
         ),
@@ -55,7 +57,7 @@ export const router = createBrowserRouter([
   {
     path: "*",
     element: (
-      <Suspense fallback={<StartupLoadingScreen />}>
+      <Suspense fallback={<PageLoader />}>
         <NotFound />
       </Suspense>
     ),
